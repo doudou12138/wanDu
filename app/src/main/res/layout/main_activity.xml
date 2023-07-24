@@ -95,77 +95,86 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/news_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/news_list0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/search"
-        android:layout_marginTop="40sp"
         >
 
-        <LinearLayout
-            android:id="@+id/list1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="@+id/news_list"
-            android:paddingBottom="20sp">
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="36sp"
-                android:text="玩原神以来最上头的一次抽卡"
-                android:autoSizeTextType="uniform"
-                android:textStyle="bold"
-                android:paddingRight="50sp"></TextView>
-            <TextView
-                android:id="@+id/auther"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="  阿右"></TextView>
-        </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/list1"
-            android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/news_list"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/search"-->
+<!--        android:layout_marginTop="40sp"-->
+<!--        >-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="36sp"
-                android:text="第一次玩原神，被这个游戏震惊到了"
-                android:textStyle="bold"
-                android:autoSizeTextType="uniform"
-                android:layout_weight="1"
-            >
+<!--        <LinearLayout-->
+<!--            android:id="@+id/list1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/news_list"-->
+<!--            android:paddingBottom="20sp">-->
+<!--            <TextView-->
+<!--                android:id="@+id/title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="36sp"-->
+<!--                android:text="玩原神以来最上头的一次抽卡"-->
+<!--                android:autoSizeTextType="uniform"-->
+<!--                android:textStyle="bold"-->
+<!--                android:paddingRight="50sp"></TextView>-->
+<!--            <TextView-->
+<!--                android:id="@+id/auther"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="  阿右"></TextView>-->
+<!--        </LinearLayout>-->
 
-            </TextView>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/list1"-->
+<!--            android:orientation="vertical">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                >
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="36sp"-->
+<!--                android:text="第一次玩原神，被这个游戏震惊到了"-->
+<!--                android:textStyle="bold"-->
+<!--                android:autoSizeTextType="uniform"-->
+<!--                android:layout_weight="1"-->
+<!--            >-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="92sp"
-                    android:layout_weight="1"
-                    android:src="@drawable/role">
+<!--            </TextView>-->
 
-                </ImageView>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                >-->
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height = "92sp"
-                    android:layout_weight="1"
-                    android:src="@drawable/yuan">
+<!--                <ImageView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="92sp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:src="@drawable/role">-->
 
-                </ImageView>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+<!--                </ImageView>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height = "92sp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:src="@drawable/yuan">-->
+
+<!--                </ImageView>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

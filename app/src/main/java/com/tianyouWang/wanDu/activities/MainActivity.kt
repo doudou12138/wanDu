@@ -2,13 +2,26 @@ package com.tianyouWang.wanDu.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tianyouWang.wanDu.R
+import com.tianyouWang.wanDu.adapter.NewsAdapter
+import com.tianyouWang.wanDu.bean.NewsItemBean
+
 
 class MainActivity : ComponentActivity() {
+
+    /** RecycleView 实例 */
+    private var newsRecycleView: RecyclerView? = null
+
+    /** RecycleView 的适配器 */
+    private var newsAdapter: NewsAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -21,14 +34,15 @@ class MainActivity : ComponentActivity() {
         }
 
         var wanDuOnce = findViewById<TextView>(R.id.searchNow)
+
         wanDuOnce.setOnClickListener{
             Toast.makeText(this, "正在努力检索了，请小主稍等", Toast.LENGTH_SHORT).show()
         }
 
-        var newsClick = findViewById<LinearLayout>(R.id.news_list)
-        newsClick.setOnClickListener{
-            Toast.makeText(this,"正在为小主加载文章",Toast.LENGTH_SHORT).show()
-        }
+//        var newsClick = findViewById<LinearLayout>(R.id.news_list0)
+//        newsClick.setOnClickListener{
+//            Toast.makeText(this,"正在为小主加载文章",Toast.LENGTH_SHORT).show()
+//        }
 
 //        setContent {
 //            WanDuTheme {
@@ -41,7 +55,44 @@ class MainActivity : ComponentActivity() {
 //                }
 //            }
 //        }
+        addRecycleView();
+        weather_alpha();
     }
+
+    private fun addRecycleView(){
+        newsRecycleView = findViewById(R.id.news_list0);
+        newsAdapter = NewsAdapter(createNewsData());//创建了假数据
+        newsRecycleView?.adapter = newsAdapter
+        newsRecycleView?.layoutManager = LinearLayoutManager(this)
+    }
+
+    /*
+    启动天气的透明度动画
+     */
+    private fun weather_alpha(){
+        var li_weather = findViewById<LinearLayout>(R.id.weather)
+        val alpha = AnimationUtils.loadAnimation(this, R.anim.alpha_anim)
+
+        li_weather.startAnimation(alpha)
+    }
+
+    /*
+    用来给news_list造假数据的方法
+     */
+    private fun createNewsData():List<NewsItemBean>{
+        val result = ArrayList<NewsItemBean>()
+
+        val first_item = NewsItemBean("玩原神以来最激动的一次抽奖","阿右")
+        val second_item = NewsItemBean("晶核今日全面开放内测","朝夕光年")
+
+        for(i in 1..5){
+            result.add(first_item)
+            result.add(second_item)
+        }
+
+        return result
+    }
+
 }
 
 //@Composable
