@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tianyouWang.wanDu.R
 import com.tianyouWang.wanDu.adapter.NewsAdapter
 import com.tianyouWang.wanDu.bean.NewsItemBean
+import com.tianyouWang.wanDu.bean.NewsItemBeanWithAuther
+import com.tianyouWang.wanDu.bean.NewsItemBeanWithImage
+import util.LoadingUtils
 
 
 class MainActivity : ComponentActivity() {
@@ -29,14 +32,15 @@ class MainActivity : ComponentActivity() {
         weatherPart.setOnClickListener {
             // 在这里处理点击事件
             // 执行跳转到指定页面的操作
-            val intent = Intent(this, WeatherActivity::class.java)
-            startActivity(intent)
+            LoadingUtils.startWithLoading(this,WeatherActivity::class.java)
+
         }
 
         var wanDuOnce = findViewById<TextView>(R.id.searchNow)
 
         wanDuOnce.setOnClickListener{
-            Toast.makeText(this, "正在努力检索了，请小主稍等", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                "正在努力检索了，请小主稍等", Toast.LENGTH_SHORT).show()
         }
 
 //        var newsClick = findViewById<LinearLayout>(R.id.news_list0)
@@ -70,8 +74,8 @@ class MainActivity : ComponentActivity() {
     启动天气的透明度动画
      */
     private fun weather_alpha(){
-        var li_weather = findViewById<LinearLayout>(R.id.weather)
-        val alpha = AnimationUtils.loadAnimation(this, R.anim.alpha_anim)
+        var li_weather = findViewById<LinearLayout>(R.id.weather)  //找到组件
+        val alpha = AnimationUtils.loadAnimation(this, R.anim.alpha_anim)   //找到动画
 
         li_weather.startAnimation(alpha)
     }
@@ -82,13 +86,20 @@ class MainActivity : ComponentActivity() {
     private fun createNewsData():List<NewsItemBean>{
         val result = ArrayList<NewsItemBean>()
 
-        val first_item = NewsItemBean("玩原神以来最激动的一次抽奖","阿右")
-        val second_item = NewsItemBean("晶核今日全面开放内测","朝夕光年")
+        val first_item_auther = NewsItemBeanWithAuther("玩原神以来最激动的一次抽奖","阿右")
+        val second_item_auther = NewsItemBeanWithAuther("晶核今日全面开放内测","朝夕光年")
 
-        for(i in 1..5){
-            result.add(first_item)
-            result.add(second_item)
-        }
+        val first_item_image = NewsItemBeanWithImage("原神启动",R.drawable.yuan)
+        val second_item_image = NewsItemBeanWithImage("yuanshen,qidong!",R.drawable.role)
+
+        result.add(first_item_auther)
+        result.add(second_item_auther)
+        result.add(first_item_image)
+        result.add(second_item_image)
+        result.add(first_item_image)
+        result.add(first_item_auther)
+        result.add(first_item_image)
+        result.add(first_item_auther)
 
         return result
     }

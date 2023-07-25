@@ -15,20 +15,21 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="back"
-            android:layout_weight="1"
+            android:layout_weight="3"
             >
         </Button>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="10"
             ></TextView>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
+            android:visibility="gone"
             android:text="add">
 
         </Button>
