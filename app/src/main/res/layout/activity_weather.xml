@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".activities.WeatherActivity">
+    tools:context=".activities.WeatherActivity"
+    android:background="@drawable/sunny_back">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,10 +38,210 @@
 
     </LinearLayout>
 
-    <include layout="@layout/content_weather"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12"
-        />
+        android:layout_weight="13">
+
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="90sp"
+            android:layout_height="70sp"
+
+            android:autoSizeTextType="uniform"
+            android:text="北京"
+
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="110sp"
+            android:layout_height="120sp"
+            android:layout_marginTop="56dp"
+            android:autoSizeTextType="uniform"
+            android:text="18"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/position">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:text="°"
+            android:textColor="@color/white"
+            android:textSize="100sp"
+            app:layout_constraintStart_toEndOf="@id/temperature"
+            app:layout_constraintTop_toTopOf="@id/temperature">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/weatherDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大部晴朗"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/temperature">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/temperatureWidht"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10~30°C"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weatherDescription">
+
+        </TextView>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64sp"
+            app:layout_constraintTop_toBottomOf="@id/temperatureWidht">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:orientation="vertical">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/warn"
+                    android:layout_width="match_parent"
+                    android:layout_height="100sp"
+                    android:background="#9CCE"
+                    android:layout_marginBottom="10sp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/warnTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/warn_blue2"
+                        android:text="warn"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="25sp"
+                        android:paddingBottom="4sp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/warnDes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="warnDescription"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/warnTitle">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/warnSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/warnDes"
+                        android:text="source"
+                        android:textColor="#312788"
+                        android:textSize="16sp">
+                    </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/airQuality"
+                    android:background="#9CCE"
+                    android:layout_marginBottom="10sp"
+                    >
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="空气质量"
+                        android:textSize="16sp"
+                        android:textColor="#312966"
+                        android:drawableLeft="@drawable/dry_icon_orange_24">
+
+                    </TextView>
+                    <TextView
+                        android:id="@+id/airLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="57 - 良"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/title"
+                        android:textSize="20sp"
+                        ></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/airDes"
+                        app:layout_constraintTop_toBottomOf="@+id/airLevel"
+                        android:text="当前AQI(CN)为 "
+                        android:textColor="@color/white">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/airAQI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@+id/airDes"
+                        app:layout_constraintTop_toTopOf="@+id/airDes"
+                        android:text="92"
+                        android:textColor="@color/white">
+
+                    </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/weather_change"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#9CCE">
+                    <TextView
+                        android:id="@+id/weather_list_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="每小时天气预报"
+                        android:textSize="16sp"
+                        android:textColor="#312966"
+                        android:drawableLeft="@drawable/clock_icon_24"
+                        ></TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/weather_list"
+                        android:layout_width="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/weather_list_title"
+                        android:layout_height="64sp"
+                        android:orientation="horizontal"
+                        >
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

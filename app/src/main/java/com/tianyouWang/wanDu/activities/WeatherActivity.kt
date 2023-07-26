@@ -4,10 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.Alignment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tianyouWang.wanDu.R
+import com.tianyouWang.wanDu.adapter.WeatherAdapter
+import com.tianyouWang.wanDu.bean.WeatherItemBean
+import com.tianyouWang.wanDu.enum.WeatherType
 
 class WeatherActivity :ComponentActivity() {
+    private var weatherRecycleView: RecyclerView? = null
+    private var weatherAdapter: WeatherAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
@@ -17,5 +27,25 @@ class WeatherActivity :ComponentActivity() {
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
+
+        addRecycleView();
+    }
+    
+    private fun addRecycleView(){
+        weatherRecycleView = findViewById(R.id.weather_list)
+        weatherAdapter = WeatherAdapter(onCreateWeatherData())
+        weatherRecycleView?.adapter = weatherAdapter
+        weatherRecycleView?.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+
+    }
+
+    private fun onCreateWeatherData() :List<WeatherItemBean>{
+        val result = ArrayList<WeatherItemBean>();
+        for( i in 11..20){
+            val bean = WeatherItemBean(i.toString()+"时",WeatherType.SUNNY)
+            result.add(bean)
+        }
+
+        return result
     }
 }
