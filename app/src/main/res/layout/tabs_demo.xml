@@ -15,7 +15,6 @@
         <androidx.fragment.app.FragmentContainerView
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:id="@+id/content"
             android:layout_weight="1">
 
         </androidx.fragment.app.FragmentContainerView>
@@ -29,8 +28,7 @@
             >
 
             <TextView
-                android:id="@+id/homePageButton"
-                android:drawableTop="@drawable/home_icon_48_black"
+                android:drawableTop="@drawable/sunny_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="首页"
@@ -39,8 +37,7 @@
 
 
             <TextView
-                android:id="@+id/videoPageButton"
-                android:drawableTop="@drawable/video_icon_48_black"
+                android:drawableTop="@drawable/cloudy_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -49,8 +46,7 @@
 
 
             <TextView
-                android:id="@+id/myPageButton"
-                android:drawableTop="@drawable/man_icon_48_black"
+                android:drawableTop="@drawable/rainy_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

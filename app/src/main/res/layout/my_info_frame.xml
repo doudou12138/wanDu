@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8sp"
+    android:paddingTop="8sp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/myRoundHead"
+        android:layout_width="96sp"
+        android:layout_height="96sp"
+        android:src="@drawable/rainy_icon"
+        android:background="@drawable/round_shape"
+        >
+
+    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/myName"
+        app:layout_constraintStart_toEndOf="@+id/myRoundHead"
+        android:textSize="32sp"
+        android:paddingTop="8sp"
+        android:text="MyName"
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="46sp"
+        app:layout_constraintStart_toEndOf="@+id/myRoundHead"
+        android:layout_marginLeft="96sp"
+        app:layout_constraintTop_toBottomOf="@+id/myName"
+        android:text="myDescriptionjgaoiuw4oooooooooaf;ehoafh;eoahufaefohuohasdrewgaegwashw5yhghgni还记哦啊诶哦亲就ajbigjragrghaagajajiraijgjio"
+        android:textSize="16sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+
+        ></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>

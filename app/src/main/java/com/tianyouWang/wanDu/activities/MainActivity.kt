@@ -28,11 +28,6 @@ import kotlin.math.log
 
 class MainActivity : FragmentActivity(){
 
-    /** RecycleView 实例 */
-    private var newsRecycleView: RecyclerView? = null
-
-    /** RecycleView 的适配器 */
-    private var newsAdapter: NewsAdapter? = null
 
     /** 进行fragments之间跳转的管理 **/
     private var fragmentTransaction: FragmentTransaction? = null
@@ -42,26 +37,7 @@ class MainActivity : FragmentActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.tabs_demo)
-        //val weatherPart = findViewById<LinearLayout>(R.id.weather)
-//        weatherPart.setOnClickListener {
-//            // 在这里处理点击事件
-//            // 执行跳转到指定页面的操作
-//            LoadingUtils.startWithLoading(this,WeatherActivity::class.java)
-//
-//        }
-
-//        var wanDuOnce = findViewById<TextView>(R.id.searchNow)
-//
-//        wanDuOnce.setOnClickListener{
-//            Toast.makeText(this,
-//                "正在努力检索了，请小主稍等", Toast.LENGTH_SHORT).show()
-//        }
-
-//        var newsClick = findViewById<LinearLayout>(R.id.news_list0)
-//        newsClick.setOnClickListener{
-//            Toast.makeText(this,"正在为小主加载文章",Toast.LENGTH_SHORT).show()
-//        }
+        setContentView(R.layout.main_activity)
 
 //        setContent {
 //            WanDuTheme {
@@ -74,18 +50,11 @@ class MainActivity : FragmentActivity(){
 //                }
 //            }
 //        }
-        //addRecycleView();
-        //weather_alpha();
+
         addFragment()
         addFragmentsSwitch()
     }
 
-    private fun addRecycleView(){
-        newsRecycleView = findViewById(R.id.news_list0);
-        newsAdapter = NewsAdapter(createNewsData());//创建了假数据
-        newsRecycleView?.adapter = newsAdapter
-        newsRecycleView?.layoutManager = LinearLayoutManager(this)
-    }
 
     private fun addFragment() {
         val fragment1: Fragment = Fragment1()
@@ -94,21 +63,44 @@ class MainActivity : FragmentActivity(){
         fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction!!.add(R.id.content, fragment1)
         fragmentTransaction!!.commit()
-        now_page=0;
+
+        val home_button = findViewById<TextView>(R.id.homePageButton)
+        home_button.setCompoundDrawablesWithIntrinsicBounds(
+            0,
+            R.drawable.home_icon_48_blue,
+            0,
+            0
+        )
     }
 
     private fun setSelectPage(page_no :Int){
         if(now_page==page_no){
 
         }else{
+            val selected_button = findViewById<TextView>(getIdByNo(now_page))
+            selected_button.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                0,
+                getOriginalImage(now_page),
+                0,
+                0
+                )
+
             now_page = page_no
+            val to_select_button = findViewById<TextView>(getIdByNo(now_page))
+            to_select_button.setCompoundDrawablesWithIntrinsicBounds(
+                0,
+                getWantedImage(now_page),
+                0,
+                0
+            )
+
             val fragmentManager : FragmentManager = supportFragmentManager
             fragmentTransaction = fragmentManager.beginTransaction()
 
             fragmentTransaction?.replace(R.id.content,getFragmentByPageNo(page_no))?.commit()
-
         }
     }
+
 
     private fun addFragmentsSwitch(){
         val homePageButton = findViewById<TextView>(R.id.homePageButton)
@@ -126,45 +118,39 @@ class MainActivity : FragmentActivity(){
 
         }
     }
-    /*
-    启动天气的透明度动画
-     */
-    private fun weather_alpha(){
-        var li_weather = findViewById<LinearLayout>(R.id.weather)  //找到组件
-        val alpha = AnimationUtils.loadAnimation(this, R.anim.alpha_anim)   //找到动画
-
-        li_weather.startAnimation(alpha)
-    }
-
-    /*
-    用来给news_list造假数据的方法
-     */
-    private fun createNewsData():List<NewsItemBean>{
-        val result = ArrayList<NewsItemBean>()
-
-        val first_item_auther = NewsItemBeanWithAuther("玩原神以来最激动的一次抽奖","阿右")
-        val second_item_auther = NewsItemBeanWithAuther("晶核今日全面开放内测","朝夕光年")
-
-        val first_item_image = NewsItemBeanWithImage("原神启动",R.drawable.yuan)
-        val second_item_image = NewsItemBeanWithImage("yuanshen,qidong!",R.drawable.role)
-
-        result.add(first_item_auther)
-        result.add(second_item_auther)
-        result.add(first_item_image)
-        result.add(second_item_image)
-        result.add(first_item_image)
-        result.add(first_item_auther)
-        result.add(first_item_image)
-        result.add(first_item_auther)
-
-        return result
-    }
 
     private fun getFragmentByPageNo(page_no: Int): Fragment {
         return when (page_no) {
             0 -> Fragment1()
             1 -> Fragment2()
             2 -> Fragment3()
+            else -> throw IllegalArgumentException("Invalid page number: $page_no")
+        }
+    }
+
+    private fun getIdByNo(page_no: Int): Int{
+        return when(page_no){
+            0 -> R.id.homePageButton
+            1 -> R.id.videoPageButton
+            2 -> R.id.myPageButton
+            else -> throw IllegalArgumentException("Invalid page number: $page_no")
+        }
+    }
+
+    private fun getOriginalImage(page_no: Int):Int{
+        return when(page_no){
+            0 -> R.drawable.home_icon_48_black
+            1 -> R.drawable.video_icon_48_black
+            2 -> R.drawable.man_icon_48_black
+            else -> throw IllegalArgumentException("Invalid page number: $page_no")
+        }
+    }
+
+    private fun getWantedImage(page_no: Int):Int{
+        return when(page_no){
+            0 -> R.drawable.home_icon_48_blue
+            1 -> R.drawable.video_icon_48_blue
+            2 -> R.drawable.man_icon_48_blue
             else -> throw IllegalArgumentException("Invalid page number: $page_no")
         }
     }
