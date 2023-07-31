@@ -1,29 +1,16 @@
 package com.tianyouWang.wanDu.activities
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+
 import com.tianyouWang.wanDu.R
-import com.tianyouWang.wanDu.adapter.NewsAdapter
-import com.tianyouWang.wanDu.bean.NewsItemBean
-import com.tianyouWang.wanDu.bean.NewsItemBeanWithAuther
-import com.tianyouWang.wanDu.bean.NewsItemBeanWithImage
 import com.tianyouWang.wanDu.fragments.Fragment1
 import com.tianyouWang.wanDu.fragments.Fragment2
 import com.tianyouWang.wanDu.fragments.Fragment3
-import util.LoadingUtils
-import kotlin.math.log
 
 
 class MainActivity : FragmentActivity(){
