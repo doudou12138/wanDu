@@ -3,6 +3,7 @@ package com.tianyouWang.wanDu.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.tianyouWang.wanDu.bean.NewsItemBean
@@ -53,6 +54,14 @@ class NewsAdapter :RecyclerView.Adapter<ViewHolder>{
             is NewsViewHolder2 -> holder.bindData(newsItem as NewsItemBeanWithImage) // 如果是 NewsViewHolder2 类型，调用其 bindData 方法
             // 添加其他类型对应的 bindData 调用...
         }
+
+        holder.itemView.setOnClickListener{
+            Toast.makeText(holder.itemView.context,
+                "正在为小主加载文章",
+                Toast.LENGTH_SHORT)
+                .show()
+        }
+
     }
 
     override fun getItemCount(): Int {

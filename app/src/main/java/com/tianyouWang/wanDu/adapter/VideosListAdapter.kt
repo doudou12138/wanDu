@@ -1,10 +1,12 @@
 package com.tianyouWang.wanDu.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tianyouWang.wanDu.R
+import com.tianyouWang.wanDu.activities.VideoPlayActivity
 import com.tianyouWang.wanDu.bean.VideoItemBean
 import com.tianyouWang.wanDu.viewHolder.VideosViewHolder
 
@@ -35,9 +37,17 @@ class VideosListAdapter: RecyclerView.Adapter<VideosViewHolder>{
             holder.tvComment.text = it.size.toString()
         }
 
+        holder.ivVideoHome.setOnClickListener{
+            val context = holder.itemView.context
+            val intent = Intent(context, VideoPlayActivity::class.java)
+            context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {
         return videos_list.size;
     }
+
+
 }

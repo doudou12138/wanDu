@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#10afff"
-    android:layout_marginBottom="8sp"
+    android:layout_marginBottom="12sp"
     >
 
     <ImageView
@@ -12,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="256sp"
         android:src="@drawable/a"
+        android:background="#cFfffa"
         >
 
     </ImageView>

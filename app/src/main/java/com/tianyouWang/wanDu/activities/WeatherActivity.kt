@@ -22,6 +22,7 @@ class WeatherActivity :ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
 
+        //为back按钮添加跳转回首页的逻辑
         val back = findViewById<Button>(R.id.back)
         back.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
@@ -30,7 +31,8 @@ class WeatherActivity :ComponentActivity() {
 
         addRecycleView();
     }
-    
+
+    //添加每小时天气的RecycleView
     private fun addRecycleView(){
         weatherRecycleView = findViewById(R.id.weather_list)
         weatherAdapter = WeatherAdapter(onCreateWeatherData())
@@ -39,6 +41,7 @@ class WeatherActivity :ComponentActivity() {
 
     }
 
+    //创建每小时天气的假数据并返回
     private fun onCreateWeatherData() :List<WeatherItemBean>{
         val result = ArrayList<WeatherItemBean>();
         for( i in 11..20){

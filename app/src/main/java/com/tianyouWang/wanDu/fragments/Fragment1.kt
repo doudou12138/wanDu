@@ -1,18 +1,22 @@
 package com.tianyouWang.wanDu.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tianyouWang.wanDu.R
 import com.tianyouWang.wanDu.activities.WeatherActivity
+import com.tianyouWang.wanDu.activities.WebviewDemoActivity
 import com.tianyouWang.wanDu.adapter.NewsAdapter
 import com.tianyouWang.wanDu.bean.NewsItemBean
 import com.tianyouWang.wanDu.bean.NewsItemBeanWithAuther
@@ -37,7 +41,6 @@ class Fragment1: Fragment() {
         view =  inflater.inflate(R.layout.fragment1, container, false)
         addRecycleView();
 
-
         val weatherPart = view?.findViewById<LinearLayout>(R.id.weather)
         weatherPart?.setOnClickListener {
             // 在这里处理点击事件
@@ -49,18 +52,23 @@ class Fragment1: Fragment() {
         var wanDuOnce = view?.findViewById<TextView>(R.id.searchNow)
 
         wanDuOnce?.setOnClickListener{
-            Toast.makeText(requireContext(),
-                "正在努力检索了，请小主稍等",
-                Toast.LENGTH_SHORT)
-                .show()
-        }
 
-        var newsClick = view?.findViewById<RecyclerView>(R.id.news_list0)
-        newsClick?.setOnClickListener{
-            Toast.makeText(requireContext(),
-                "正在为小主加载文章",
-                Toast.LENGTH_SHORT)
-                .show()
+            val editText = view?.findViewById<EditText>(R.id.editText)
+            val searchQuery = editText?.text.toString().trim()
+            if (searchQuery.isNotEmpty()) {
+                Toast.makeText(requireContext(),
+                    "正在努力检索了，请小主稍等",
+                    Toast.LENGTH_SHORT)
+                    .show()
+                val intent = Intent(requireContext(), WebviewDemoActivity::class.java)
+                intent.putExtra(WebviewDemoActivity.EXTRA_SEARCH_QUERY, searchQuery)
+                startActivity(intent)
+            }else{
+                Toast.makeText(requireContext(),
+                    "小主的输入为空哦",
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
         weather_alpha();

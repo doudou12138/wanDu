@@ -26,23 +26,14 @@ class MainActivity : FragmentActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-//        setContent {
-//            WanDuTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-//                    Greeting("Android")
-//                }
-//            }
-//        }
-
         addFragment()
         addFragmentsSwitch()
     }
 
 
+    /**
+     * 为mainActivity加入fragments
+     */
     private fun addFragment() {
         val fragment1: Fragment = Fragment1()
 
@@ -60,6 +51,28 @@ class MainActivity : FragmentActivity(){
         )
     }
 
+    /*
+    添加fragment间的切换功能，调用setSelectPage完成跳转
+     */
+    private fun addFragmentsSwitch(){
+        val homePageButton = findViewById<TextView>(R.id.homePageButton)
+        homePageButton.setOnClickListener {
+            setSelectPage(0)
+        }
+        val video = findViewById<TextView>(R.id.videoPageButton)
+        video.setOnClickListener{
+            setSelectPage(1)
+        }
+
+        val myPageText = findViewById<TextView>(R.id.myPageButton)
+        myPageText.setOnClickListener{
+            setSelectPage(2)
+        }
+    }
+
+    /*
+    根据传进来的页面号设置选择要跳转的页面，完成fragment的跳转
+     */
     private fun setSelectPage(page_no :Int){
         if(now_page==page_no){
 
@@ -70,7 +83,7 @@ class MainActivity : FragmentActivity(){
                 getOriginalImage(now_page),
                 0,
                 0
-                )
+            )
 
             now_page = page_no
             val to_select_button = findViewById<TextView>(getIdByNo(now_page))
@@ -88,24 +101,7 @@ class MainActivity : FragmentActivity(){
         }
     }
 
-
-    private fun addFragmentsSwitch(){
-        val homePageButton = findViewById<TextView>(R.id.homePageButton)
-        homePageButton.setOnClickListener {
-            setSelectPage(0)
-        }
-        val video = findViewById<TextView>(R.id.videoPageButton)
-        video.setOnClickListener{
-            setSelectPage(1)
-        }
-
-        val myPageText = findViewById<TextView>(R.id.myPageButton)
-        myPageText.setOnClickListener{
-            setSelectPage(2)
-
-        }
-    }
-
+    //根据page_no获得对应的fragment
     private fun getFragmentByPageNo(page_no: Int): Fragment {
         return when (page_no) {
             0 -> Fragment1()
@@ -115,6 +111,7 @@ class MainActivity : FragmentActivity(){
         }
     }
 
+    //根据page_no获得tabs中的对应的button
     private fun getIdByNo(page_no: Int): Int{
         return when(page_no){
             0 -> R.id.homePageButton
@@ -124,6 +121,7 @@ class MainActivity : FragmentActivity(){
         }
     }
 
+    //根据page_no获得该fragment未进入状态下button的资源
     private fun getOriginalImage(page_no: Int):Int{
         return when(page_no){
             0 -> R.drawable.home_icon_48_black
@@ -133,6 +131,7 @@ class MainActivity : FragmentActivity(){
         }
     }
 
+    //根据page_no获得对应fragment进入状态下button的资源
     private fun getWantedImage(page_no: Int):Int{
         return when(page_no){
             0 -> R.drawable.home_icon_48_blue
@@ -143,22 +142,3 @@ class MainActivity : FragmentActivity(){
     }
 
 }
-
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    //生成一个Text,文本内容是"Hello "+参数name，颜色为Pink80
-//    Text(
-//        text = "Hello $name!",
-//        modifier = modifier,
-//        color = Pink80
-//    )
-//
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    WanDuTheme {
-//        Greeting("Android")
-//    }
-//}
