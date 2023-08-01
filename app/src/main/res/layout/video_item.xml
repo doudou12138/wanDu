@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="12sp"
+    >
+
+    <ImageView
+        android:id="@+id/ivVideo_home"
+        android:layout_width="match_parent"
+        android:layout_height="256sp"
+        android:src="@drawable/a"
+        android:background="#cFfffa"
+        >
+
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/ivPlay_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/ivVideo_home"
+        app:layout_constraintBottom_toBottomOf="@+id/ivVideo_home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/play_icon_72_xxhdpi">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tvLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="likeNo"
+        android:textSize="24sp"
+        android:drawableLeft="@drawable/like_icon_36_hdpi"
+        app:layout_constraintTop_toBottomOf="@+id/ivVideo_home"
+        app:layout_constraintEnd_toStartOf="@+id/ivPlay_icon"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/tvComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="commentNum"
+        android:drawableLeft="@drawable/message_icon_36_hdpi"
+        app:layout_constraintStart_toEndOf="@id/ivPlay_icon"
+        app:layout_constraintTop_toBottomOf="@id/ivVideo_home"
+        android:textSize="24sp">
+
+    </TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>
