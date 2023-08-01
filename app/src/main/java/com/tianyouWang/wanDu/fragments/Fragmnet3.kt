@@ -25,6 +25,7 @@ class Fragment3: Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment3, container, false)
+
         addRecycleView()
         return view
     }
