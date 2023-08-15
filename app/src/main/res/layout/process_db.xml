@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/fromProDataToHomeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="返回主页">
+
+    </Button>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共有">
+
+        </TextView>
+        <TextView
+            android:id="@+id/accou_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="null">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="条记录">
+
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/clear_db_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清除数据库内容"
+        android:textAlignment="center">
+
+    </Button>
+
+    <EditText
+        android:id="@+id/acc_search_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="搜索账号"
+        >
+
+    </EditText>
+
+    <Button
+        android:id="@+id/search_by_acc_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="通过账号搜索"
+        >
+
+    </Button>
+
+    <include
+        layout="@layout/user_info_detail">
+    </include>
+
+</LinearLayout>

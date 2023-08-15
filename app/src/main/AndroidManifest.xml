@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,9 +16,7 @@
             android:name=".activities.WebviewDemoActivity"
             android:exported="true"
             android:label="BaiduWeb"
-            android:theme="@style/Theme.Video">
-
-        </activity>
+            android:theme="@style/Theme.appCompat" />
         <activity
             android:name=".activities.WeatherActivity"
             android:exported="true"
@@ -37,12 +32,34 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".activities.VideoPlayActivity"
             android:exported="true"
             android:label="VideoPlayer"
-            android:theme="@style/Theme.Video" />
+            android:theme="@style/Theme.appCompat" />
+        <activity android:name=".activities.SigupActivity"
+            android:exported="true"
+            android:label="Sigup"
+            android:theme="@style/Theme.appCompat">
+        </activity>
+        <activity android:name=".activities.LoginActivity"
+            android:exported="true"
+            android:label="Login"
+            android:theme="@style/Theme.appCompat">
+
+        </activity>
+
+        <activity android:name=".activities.ProcessDBActivity"
+            android:exported="true"
+            android:label="处理用户数据"
+            android:theme="@style/Theme.appCompat">
+        </activity>
+
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

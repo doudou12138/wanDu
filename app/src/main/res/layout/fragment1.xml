@@ -72,8 +72,10 @@
             android:id="@+id/editText"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
+            android:background="@drawable/input_bored"
             android:hint="搜索内容"
             android:layout_weight="8"
+            android:padding="8sp"
             >
 
         </EditText>

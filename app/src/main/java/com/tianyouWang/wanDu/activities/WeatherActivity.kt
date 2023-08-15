@@ -40,6 +40,7 @@ class WeatherActivity :ComponentActivity() {
         val back = findViewById<Button>(R.id.back)
         back.setOnClickListener{
             val intent = Intent(this,MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
 

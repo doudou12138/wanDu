@@ -1,5 +1,7 @@
 package com.tianyouWang.wanDu.activities
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -26,10 +28,32 @@ class MainActivity : FragmentActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
+        UserManager.initialize(this)
         addFragment()
         addFragmentsSwitch()
+        checkLogin()
     }
 
+
+    /**
+     * 检查当前的登陆状态
+     */
+    private fun checkLogin(){
+        val sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.contains("token")
+
+        if (isLoggedIn) {
+            // 用户已登录，执行相应操作
+            val username = sharedPreferences.getString("username", "")
+            val token = sharedPreferences.getString("token", "")
+        } else {
+            // 用户未登录，跳转到登录界面或执行登录逻辑
+//            val intent = Intent(this,LoginActivity::class.java)
+//            startActivity(intent)
+        }
+
+
+    }
 
     /**
      * 为mainActivity加入fragments

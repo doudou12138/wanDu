@@ -1,0 +1,53 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gredit_blue_white">
+
+    <TextView
+        android:id="@+id/loginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="登 录"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="128sp"></TextView>
+
+    <include
+        android:id="@+id/account_input"
+        layout="@layout/account_input"
+        app:layout_constraintTop_toBottomOf="@+id/loginTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </include>
+
+    <TextView
+        android:id="@+id/toRegisterLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="没有账号？去注册"
+        android:textColor="#3e22ff"
+        app:layout_constraintTop_toBottomOf="@+id/account_input"
+        app:layout_constraintStart_toEndOf="@+id/loginTitle"
+        android:layout_marginTop="16sp">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/toRegisterLink"
+        android:layout_marginTop="64sp"
+        android:layout_marginLeft="64sp"
+        android:layout_marginRight="64sp"
+        android:text="登    录"
+        android:textSize="21sp"
+        android:background="@color/white">
+
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>
