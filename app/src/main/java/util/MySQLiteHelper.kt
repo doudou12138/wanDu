@@ -61,6 +61,24 @@ class MySQLiteHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
         }
     }
 
+    //更新用户信息
+    fun updateUserInfo(account_num: String,user_name:String,age:Int,email:String,self_description:String){
+        println("user_name=$user_name,age = $age,email:$email,self_introduction:$self_description")
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("userName",user_name)
+        values.put("age",age)
+        values.put("email",email)
+        values.put("self_introduction",self_description)
+        val whereClause = "account_num = ?"
+        val whereArgs = arrayOf(account_num)
+
+        db.update("User", values, whereClause, whereArgs)
+        prtUsers()
+        values.clear()
+        db.close()
+    }
+
     fun prtUsers(){
         var stringBuilder = StringBuilder()
         val query = "SELECT * FROM User"

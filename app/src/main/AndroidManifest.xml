@@ -57,6 +57,13 @@
             android:theme="@style/Theme.appCompat">
         </activity>
 
+        <activity android:name=".activities.DetailInfoActivity"
+            android:exported="true"
+            android:label="用户个人详细信息"
+            android:theme="@style/Theme.appCompat">
+
+        </activity>
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

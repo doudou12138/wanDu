@@ -6,12 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tianyouWang.wanDu.R
+import com.tianyouWang.wanDu.activities.DetailInfoActivity
 import com.tianyouWang.wanDu.activities.LoginActivity
+import com.tianyouWang.wanDu.activities.ProcessDBActivity
 import com.tianyouWang.wanDu.adapter.NewsAdapter
 import com.tianyouWang.wanDu.bean.NewsItemBean
 import com.tianyouWang.wanDu.bean.NewsItemBeanWithAuther
@@ -37,6 +40,7 @@ class Fragment3: Fragment() {
             emptyMyInfo()
         }
         addRecycleView()
+        addToProDataBtn()
         return view
     }
 
@@ -84,6 +88,15 @@ class Fragment3: Fragment() {
         return result
     }
 
+    //为添加到数据处理的按钮添加跳转逻辑
+    private fun addToProDataBtn(){
+        val toProDateBtn = view?.findViewById<Button>(R.id.fromHomeToProcessData)
+        toProDateBtn?.setOnClickListener {
+            val intent = Intent(requireContext(),ProcessDBActivity::class.java)
+            startActivity(intent)
+        }
+
+    }
     private fun updateMyInfo(){
         var username = view?.findViewById<TextView>(R.id.myName)
         var user_description = view?.findViewById<TextView>(R.id.myDescription)
@@ -92,8 +105,8 @@ class Fragment3: Fragment() {
         user_description?.text = UserManager.getSelfDescription()
         for(view:View? in arrayListOf<View?>(username,user_description)){
             view?.setOnClickListener{
-                val intent = Intent(requireContext(),LoginActivity::class.java)
-                //startActivity(intent)
+                val intent = Intent(requireContext(),DetailInfoActivity::class.java)
+                startActivity(intent)
             }
         }
     }

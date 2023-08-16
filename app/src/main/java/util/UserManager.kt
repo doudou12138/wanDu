@@ -1,5 +1,7 @@
 import android.content.Context
 import android.content.SharedPreferences
+import com.tianyouWang.wanDu.model.User
+import util.MySQLiteHelper
 
 object UserManager {
 
@@ -16,11 +18,12 @@ object UserManager {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
 
+    //判断现在是否有用户登录
     fun isLoggedIn(): Boolean {
         return sharedPreferences.getBoolean(IS_LOGIN_KEY, false)
     }
 
-
+    //保存现在登陆中的用户的信息于本机
     fun savaUser(account_num: String, user_name:String, self_desc:String, head_image: ByteArray?){
         var edit = sharedPreferences.edit()
         edit.putBoolean(IS_LOGIN_KEY,true)
@@ -30,6 +33,7 @@ object UserManager {
         edit.apply()
     }
 
+    //删除现在登陆的用户信息
     fun clearUser(){
         val edit = sharedPreferences.edit()
         edit.putBoolean(IS_LOGIN_KEY,false)
@@ -38,6 +42,7 @@ object UserManager {
         edit.putString(SELF_DESCRIPTION_KEY,"")
         edit.apply()
     }
+
 
     fun getAccountNum() :String {
         return sharedPreferences.getString(ACCOUNT_KEY,"")?:""
@@ -50,7 +55,6 @@ object UserManager {
     fun getSelfDescription(): String {
         return sharedPreferences.getString(SELF_DESCRIPTION_KEY,"")?:""
     }
-
 
     // Add methods for login, logout, and other user-related operations
 }

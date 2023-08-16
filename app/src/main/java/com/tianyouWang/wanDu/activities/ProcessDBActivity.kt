@@ -2,6 +2,7 @@ package com.tianyouWang.wanDu.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -56,6 +57,7 @@ class ProcessDBActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }else{
+                showInfos()
                 setUserInfoVisibility(View.VISIBLE)
             }
 
@@ -68,6 +70,30 @@ class ProcessDBActivity : AppCompatActivity() {
         record_num.text = mySQLiteHelper.getNum().toString()
     }
 
+    //显示个人信息数据
+    private fun showInfos(){
+        val head_image = findViewById<ImageView>(R.id.detail_info_head_image)
+        head_image.setImageResource(R.drawable.head_image)
+
+
+        val infos = listOf<EditText>(
+            findViewById(R.id.detail_info_username),
+            findViewById(R.id.detail_info_age),
+            findViewById(R.id.detail_info_email),
+            findViewById(R.id.detail_info_self_introduction)
+        )
+        val user = MySQLiteHelper(this).queryByAccount_num(UserManager.getAccountNum())
+        val acc_num = findViewById<TextView>(R.id.detail_info_acc_num)
+        acc_num.text =user?.getAccountNum()
+
+        infos[0].text = Editable.Factory.getInstance().newEditable(user?.getUserName())
+        infos[1].text = Editable.Factory.getInstance().newEditable(user?.getAge().toString())
+        infos[2].text = Editable.Factory.getInstance().newEditable(user?.getEmail()?:"")
+        infos[3].text = Editable.Factory.getInstance().newEditable(user?.getSelfDescr()?:"")
+
+    }
+
+    //修改个人信息组件的可见性
     private fun setUserInfoVisibility(state:Int){
         var views :List<View> = arrayListOf(
             findViewById<TextView>(R.id.detail_info_head_image_title),
