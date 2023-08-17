@@ -24,6 +24,7 @@ class DetailInfoActivity : AppCompatActivity() {
 
         addEditBtn()
         addBackBtn()
+        addExitBtn()
     }
 
     override fun onResume() {
@@ -87,6 +88,7 @@ class DetailInfoActivity : AppCompatActivity() {
         infos[3].text = Editable.Factory.getInstance().newEditable(user?.getSelfDescr()?:"")
     }
 
+    //为从个人详细页面跳转到MainPage添加逻辑
     private fun addBackBtn(){
         val backBtn = findViewById<TextView>(R.id.from_userinfo_to_home)
         backBtn.setOnClickListener {
@@ -96,6 +98,18 @@ class DetailInfoActivity : AppCompatActivity() {
         }
     }
 
+    private fun addExitBtn(){
+        val exitLog = findViewById<TextView>(R.id.exitLog)
+        exitLog.setOnClickListener {
+            UserManager.clearUser()
+            val intent = Intent(this,MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+
+    }
+
+    //显示account_num的数据
     private fun showAcc_num(){
         val account_num = findViewById<TextView>(R.id.detail_info_acc_num)
         println( UserManager.getAccountNum())

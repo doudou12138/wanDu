@@ -120,7 +120,7 @@ class MySQLiteHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
 
     fun clearUsers(){
         val db = this.writableDatabase
-        db.delete("User", null, null) // 删除 User 表中的所有数据
+        db.delete("User", null,null) // 删除 User 表中的所有数据
         db.close()
     }
 

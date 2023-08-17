@@ -30,7 +30,7 @@
     <include
         android:id="@+id/info_detail"
         android:layout_width="match_parent"
-        android:layout_height="512sp"
+        android:layout_height="480sp"
         layout="@layout/user_info_detail"
         app:layout_constraintTop_toBottomOf="@id/from_userinfo_to_home">
     </include>
@@ -46,4 +46,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="#21b1fe"
         ></Button>
+
+    <TextView
+        android:id="@+id/exitLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出登录"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/userinfo_edit_btn"
+        android:layout_marginTop="16sp"></TextView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
