@@ -1,13 +1,17 @@
 package com.tianyouWang.wanDu.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.tianyouWang.wanDu.bean.NewsItemBean
 import com.tianyouWang.wanDu.R
+import com.tianyouWang.wanDu.activities.ShowNewsDetailActivity
 import com.tianyouWang.wanDu.bean.NewsItemBeanWithAuther
 import com.tianyouWang.wanDu.bean.NewsItemBeanWithImage
 import com.tianyouWang.wanDu.viewHolder.NewsViewHolder
@@ -19,12 +23,15 @@ class NewsAdapter :RecyclerView.Adapter<ViewHolder>{
     private final val ITEM_TYPE1=1;
     private final val ITEM_TYPE2=2;
     private final val END_ITEM = 0;
-    private final val itemType_pos = listOf(ITEM_TYPE1,ITEM_TYPE1,ITEM_TYPE2,ITEM_TYPE2,ITEM_TYPE2,ITEM_TYPE1,ITEM_TYPE2,ITEM_TYPE1);
+    private final val itemType_pos = listOf(ITEM_TYPE1,ITEM_TYPE1,ITEM_TYPE2,ITEM_TYPE2,ITEM_TYPE1,ITEM_TYPE2);
 
     constructor(newsList:List<NewsItemBean>){
         this.newsList = newsList;
     }
 
+    /*
+    获得第i个位置的类型,这里是死数据,直接返回
+     */
     override fun getItemViewType(position: Int): Int {
         return itemType_pos.get(position)
     }
@@ -60,6 +67,18 @@ class NewsAdapter :RecyclerView.Adapter<ViewHolder>{
                 "正在为小主加载文章",
                 Toast.LENGTH_SHORT)
                 .show()
+            val intent = Intent(it.context,ShowNewsDetailActivity::class.java)
+            when(newsItem){
+                is NewsItemBeanWithImage -> {
+                    intent.putExtra(ShowNewsDetailActivity.NEWS_TITLE,newsItem.title)
+                    intent.putExtra(ShowNewsDetailActivity.NEWS_CONTENT,newsItem.content)
+                }
+                is NewsItemBeanWithAuther ->{
+                    intent.putExtra(ShowNewsDetailActivity.NEWS_TITLE,newsItem.title)
+                    intent.putExtra(ShowNewsDetailActivity.NEWS_CONTENT,newsItem.content)
+                }
+            }
+            holder.itemView.context.startActivity(intent)
         }
 
     }

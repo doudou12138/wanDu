@@ -17,17 +17,27 @@ data class NewsItemBeanWithAuther(
     /*
     作者
      */
-    val auther: String?
+    val auther: String?,
+
+    /*
+    新闻内容
+     */
+    val content:String?
 ): NewsItemBean();
 
 data class NewsItemBeanWithImage(
     /*
     标题
      */
-    val title:String?,
+    var title:String?,
 
     /*
     插图
      */
-    val imageUrl:Int
+    val imageUrl:Int,
+
+    /*
+    新闻内容
+     */
+    var content:String?
 ): NewsItemBean();

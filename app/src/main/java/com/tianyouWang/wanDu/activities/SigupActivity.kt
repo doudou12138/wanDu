@@ -1,6 +1,5 @@
 package com.tianyouWang.wanDu.activities
 
-import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.tianyouWang.wanDu.R
-import com.tianyouWang.wanDu.model.User
+import com.tianyouWang.wanDu.model.User.User
 import util.MySQLiteHelper
 
 class SigupActivity : AppCompatActivity() {

@@ -1,7 +1,5 @@
 import android.content.Context
 import android.content.SharedPreferences
-import com.tianyouWang.wanDu.model.User
-import util.MySQLiteHelper
 
 object UserManager {
 

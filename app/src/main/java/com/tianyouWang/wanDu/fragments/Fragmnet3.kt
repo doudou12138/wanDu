@@ -16,15 +16,15 @@ import com.tianyouWang.wanDu.activities.DetailInfoActivity
 import com.tianyouWang.wanDu.activities.LoginActivity
 import com.tianyouWang.wanDu.activities.ProcessDBActivity
 import com.tianyouWang.wanDu.adapter.NewsAdapter
-import com.tianyouWang.wanDu.bean.NewsItemBean
-import com.tianyouWang.wanDu.bean.NewsItemBeanWithAuther
-import com.tianyouWang.wanDu.bean.NewsItemBeanWithImage
+import com.tianyouWang.wanDu.model.News.NewsService
 
 class Fragment3: Fragment() {
     private var view: View? = null
 
     private var myWorksRecycleView:RecyclerView? = null
     private var myWorksAdapter: NewsAdapter? =null
+
+    private var newsService: NewsService = NewsService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,31 +62,11 @@ class Fragment3: Fragment() {
 
     private fun addRecycleView(){
         myWorksRecycleView = view?.findViewById(R.id.myWorksList);
-        myWorksAdapter = NewsAdapter(createNewsData());//创建了假数据
+        myWorksAdapter = NewsAdapter(newsService.getStaredNewsByUserAcc(UserManager.getAccountNum()));//创建了假数据
         myWorksRecycleView?.adapter = myWorksAdapter
         myWorksRecycleView?.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun createNewsData():List<NewsItemBean>{
-        val result = ArrayList<NewsItemBean>()
-
-        val first_item_auther = NewsItemBeanWithAuther("玩原神以来最激动的一次抽奖","阿右")
-        val second_item_auther = NewsItemBeanWithAuther("晶核今日全面开放内测","朝夕光年")
-
-        val first_item_image = NewsItemBeanWithImage("原神启动",R.drawable.yuan)
-        val second_item_image = NewsItemBeanWithImage("yuanshen,qidong!",R.drawable.role)
-
-        result.add(first_item_auther)
-        result.add(second_item_auther)
-        result.add(first_item_image)
-        result.add(second_item_image)
-        result.add(first_item_image)
-        result.add(first_item_auther)
-        result.add(first_item_image)
-        result.add(first_item_auther)
-
-        return result
-    }
 
     //为添加到数据处理的按钮添加跳转逻辑
     private fun addToProDataBtn(){

@@ -11,16 +11,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tianyouWang.wanDu.R
 import com.tianyouWang.wanDu.activities.WeatherActivity
 import com.tianyouWang.wanDu.activities.WebviewDemoActivity
 import com.tianyouWang.wanDu.adapter.NewsAdapter
-import com.tianyouWang.wanDu.bean.NewsItemBean
-import com.tianyouWang.wanDu.bean.NewsItemBeanWithAuther
-import com.tianyouWang.wanDu.bean.NewsItemBeanWithImage
+import com.tianyouWang.wanDu.model.News.NewsService
 import util.LoadingUtils
 
 class Fragment1: Fragment() {
@@ -32,6 +29,8 @@ class Fragment1: Fragment() {
     /** RecycleView 的适配器 */
     private var newsAdapter: NewsAdapter? = null
 
+    /** 用于news服务的service**/
+    private var newsService: NewsService = NewsService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +44,10 @@ class Fragment1: Fragment() {
         weatherPart?.setOnClickListener {
             // 在这里处理点击事件
             // 执行跳转到指定页面的操作
-            LoadingUtils.startWithLoading(requireActivity(), WeatherActivity::class.java)
-
+        //带有加载动画的跳转
+        //LoadingUtils.startWithLoading(requireActivity(), WeatherActivity::class.java)
+        val intent = Intent(requireContext(),WeatherActivity::class.java)
+            startActivity(intent)
         }
 
         var wanDuOnce = view?.findViewById<TextView>(R.id.searchNow)
@@ -85,7 +86,7 @@ class Fragment1: Fragment() {
 
     private fun addRecycleView(){
         newsRecycleView = view?.findViewById(R.id.news_list0);
-        newsAdapter = NewsAdapter(createNewsData());//创建了假数据
+        newsAdapter = NewsAdapter(newsService.getNewsList());//创建了假数据
         newsRecycleView?.adapter = newsAdapter
         newsRecycleView?.layoutManager = LinearLayoutManager(requireContext())
     }
@@ -100,27 +101,4 @@ class Fragment1: Fragment() {
         li_weather?.startAnimation(alpha)
     }
 
-    /*
-    用来给news_list造假数据的方法
-     */
-    private fun createNewsData():List<NewsItemBean>{
-        val result = ArrayList<NewsItemBean>()
-
-        val first_item_auther = NewsItemBeanWithAuther("玩原神以来最激动的一次抽奖","阿右")
-        val second_item_auther = NewsItemBeanWithAuther("晶核今日全面开放内测","朝夕光年")
-
-        val first_item_image = NewsItemBeanWithImage("原神启动",R.drawable.yuan)
-        val second_item_image = NewsItemBeanWithImage("yuanshen,qidong!",R.drawable.role)
-
-        result.add(first_item_auther)
-        result.add(second_item_auther)
-        result.add(first_item_image)
-        result.add(second_item_image)
-        result.add(first_item_image)
-        result.add(first_item_auther)
-        result.add(first_item_image)
-        result.add(first_item_auther)
-
-        return result
-    }
 }

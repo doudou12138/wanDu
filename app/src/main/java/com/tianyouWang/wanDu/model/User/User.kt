@@ -1,4 +1,4 @@
-package com.tianyouWang.wanDu.model
+package com.tianyouWang.wanDu.model.User
 
 
 class User(private val account_num:String,private var userName:String,private var pwd:String) {

@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.tianyouWang.wanDu.model.User
+import com.tianyouWang.wanDu.model.User.User
 
 class MySQLiteHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION) {
 
@@ -40,7 +40,7 @@ class MySQLiteHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
     }
 
     //根据账号查找用户，并返回User类型
-    fun queryByAccount_num(account_num:String):User? {
+    fun queryByAccount_num(account_num:String): User? {
         val query = "SELECT * FROM User WHERE account_num = ?"
         val db = this.readableDatabase
         val cursor = db.rawQuery(query, arrayOf(account_num))
